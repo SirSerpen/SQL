@@ -65,3 +65,10 @@ CREATE TABLE Product (
 	ProductID int IDENTITY(1,1) NOT NULL,
 	ProductName varchar(25)
 );
+
+
+--How to inner join tabels
+SELECT p.ProductName, od.Quantity
+FROM Products AS p
+INNER JOIN OrderDetails as od
+ON p.ProductID = od.ProductID

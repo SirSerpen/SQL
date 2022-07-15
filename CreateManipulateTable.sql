@@ -53,11 +53,13 @@ ADD PersonID int;
 ALTER TABLE Orders
 ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
 
-INSERT INTO Orders (Details)
-VALUES	('First Order'),
-		('Second Order');
+INSERT INTO Orders (PersonID, Details)
+VALUES	(1, 'First Order'),
+		(2, 'Second Order');
 
 SELECT * FROM Orders;
+
+TRUNCATE TABLE Orders;
 
 DROP TABLE Orders;
 
@@ -66,9 +68,8 @@ CREATE TABLE Product (
 	ProductName varchar(25)
 );
 
-
 --How to inner join tabels
-SELECT p.ProductName, od.Quantity
-FROM Products AS p
-INNER JOIN OrderDetails as od
-ON p.ProductID = od.ProductID
+SELECT p.FirstName, od.Details
+FROM Persons AS p
+JOIN Orders AS od
+ON p.PersonID = od.PersonID;
